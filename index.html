@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consulenza e Formazione - Napoli</title>
+  <meta name="description" content="Esperti in orientamento universitario e formazione professionale a Napoli. Trasforma il tuo futuro.">
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --clr-primary: #0057B7;
+      --clr-secondary: #FFD200;
+      --clr-accent: #FF5C00;
+      --clr-bg: #F9FAFF;
+      --ff-body: 'Inter', sans-serif;
+      --ff-heading: 'Poppins', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family: var(--ff-body); background: var(--clr-bg); color: #333; }
+    h1,h2,h3 { font-family: var(--ff-heading); }
+
+    /* Navbar */
+    nav {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: saturate(180%) blur(10px);
+      transition: background .3s;
+    }
+    nav.scrolled { background: #fff; }
+    .nav-link {
+      position: relative; font-weight:500;
+      transition: color .3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute; left: 0; bottom: -3px;
+      width: 0; height: 2px;
+      background: var(--clr-accent);
+      transition: width .3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Hero */
+/* Hero senza overlay, con immagine reale di studenti via Unsplash */
+.hero {
+  height: 90vh;
+  background: url('https://source.unsplash.com/1600x900/?students,university') center/cover no-repeat;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.hero .content {
+  position: relative; z-index: 1;
+  text-align: center; color: #fff;
+  animation: fadeIn 1s ease-out;
+}
+.hero .content {
+  position: relative; z-index: 1;
+  text-align: center; color: #fff;
+  animation: fadeIn 1s ease-out;
+}        .hero .content {
+      position: relative; z-index:1;
+      text-align: center; color:#fff;
+      animation: fadeIn 1s ease-out;
+    }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(20px);} to { opacity:1; transform: translateY(0);} }
+    .btn-accent {
+      background: linear-gradient(45deg, var(--clr-accent), var(--clr-secondary));
+      color:#fff; border:none;
+      background-size:200% 200%; transition: background-position .5s;
+    }
+    .btn-accent:hover { background-position:100% 0; }
+
+    /* Reveal animations */
+    .reveal {
+      opacity:0; transform: translateY(30px);
+      transition: all .6s ease-out;
+    }
+    .reveal.active { opacity:1; transform: translateY(0); }
+
+    /* Sections */
+    section { padding: 4rem 0; }
+    .section-title { position: relative; display: inline-block; margin-bottom:2rem; }
+    .section-title::after {
+      content: '';
+      position: absolute; left:50%; bottom:-8px;
+      transform: translateX(-50%);
+      width:50px; height:3px;
+      background: var(--clr-accent);
+    }
+
+    /* Services */
+    .card-service {
+      background:#fff; border-radius:1rem;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      padding:2rem; text-align:center;
+      transition: transform .4s, box-shadow .4s;
+    }
+    .card-service:hover {
+      transform: translateY(-10px);
+      box-shadow:0 16px 30px rgba(0,0,0,0.15);
+    }
+    .card-service .icon {
+      font-size:2.5rem; color: var(--clr-accent);
+      margin-bottom:1rem;
+      transition: transform .4s;
+    }
+    .card-service:hover .icon {
+      transform: rotate(15deg) scale(1.2);
+    }
+
+    /* Courses grid */
+    .courses {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap:1.5rem;
+    }
+    .courses .card {
+      border:none; border-radius:.75rem; overflow:hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .courses .card:hover {
+      transform: scale(1.05);
+      box-shadow:0 12px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Testimonial */
+    .testimonial {
+      background: var(--clr-primary);
+      color:#fff; border-radius:1rem;
+      padding:3rem 2rem; text-align:center;
+    }
+
+    /* Footer */
+    footer {
+      background:#111; color:#ccc;
+      padding:3rem 0;
+      font-size:.9rem;
+    }
+    footer a { color: var(--clr-secondary); text-decoration:none; }
+    .social-icon { margin-right:1rem; font-size:1.2rem; }
+
+    /* Sticky Mobile CTA */
+    #mobileCTA {
+      display:none;
+      position:fixed; bottom:1rem; left:50%; transform:translateX(-50%);
+      background: var(--clr-accent); color:#fff;
+      padding:.75rem 2rem; border-radius:50px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      z-index:999;
+      transition: transform .3s;
+    }
+    #mobileCTA:active { transform:translateX(-50%) scale(0.95); }
+    @media(max-width:768px) { #mobileCTA { display:block; } }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top py-3">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="#">LogoConsulenza</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#chi-siamo">Chi Siamo</a></li>
+        <li class="nav-item"><a class="nav-link" href="#servizi">Servizi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#corsi">Corsi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonianze">Testimonianze</a></li>
+        <li class="nav-item ms-3"><a class="btn btn-accent" href="#contatti">Contatti</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="content">
+    <h1 class="display-4 fw-bold mb-3">Costruiamo il tuo<br><span style="background: linear-gradient(45deg,#FFD200,#FF5C00);-webkit-background-clip: text;color:transparent;">percorso di laurea</span></h1>
+    <p class="lead mb-4">Supporto e corsi professionali da Napoli, per studenti ambiziosi.</p>
+    <a href="#contatti" class="btn btn-accent btn-lg me-2">Prenota consulenza</a>
+    <a href="#corsi" class="btn btn-outline-primary btn-lg">Scopri i corsi</a>
+  </div>
+</section>
+
+<main class="container pt-5">
+
+  <!-- Chi Siamo -->
+  <section id="chi-siamo" class="text-center reveal">
+    <h2 class="section-title">Chi Siamo</h2>
+    <p class="mx-auto" style="max-width:600px;">Team di professionisti con oltre <strong>500 studenti</strong> guidati verso il successo universitario e professionale.</p>
+  </section>
+
+  <!-- Servizi -->
+  <section id="servizi" class="reveal">
+    <h2 class="section-title text-center">I Nostri Servizi</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card-service">
+          <div class="icon"><i class="fas fa-user-graduate"></i></div>
+          <h5>Orientamento Laurea</h5>
+          <p>Analisi profilo e scelta percorso ideale.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card-service">
+          <div class="icon"><i class="fas fa-book-reader"></i></div>
+          <h5>Tutoraggio</h5>
+          <p>Sessioni personalizzate per ogni esame.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card-service">
+          <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h5>Corsi Online</h5>
+          <p>Soft skills e tecniche avanzate.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card-service">
+          <div class="icon"><i class="fas fa-chart-line"></i></div>
+          <h5>Coaching</h5>
+          <p>Crescita personale e professionale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Corsi in Evidenza -->
+  <section id="corsi" class="reveal">
+    <h2 class="section-title text-center">Corsi in Evidenza</h2>
+    <div class="courses">
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Test ingresso">
+        <div class="card-body text-center">
+          <h5 class="card-title">Preparazione Test Ingresso</h5>
+          <a href="#" class="btn btn-accent btn-sm mt-2">Scopri</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Soft skills">
+        <div class="card-body text-center">
+          <h5 class="card-title">Workshop Soft Skills</h5>
+          <a href="#" class="btn btn-accent btn-sm mt-2">Iscriviti</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Tutoraggio">
+        <div class="card-body text-center">
+          <h5 class="card-title">Tutoraggio One-to-One</h5>
+          <a href="#" class="btn btn-accent btn-sm mt-2">Prenota</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonianze -->
+  <section id="testimonianze" class="text-center reveal">
+    <h2 class="section-title">Testimonianze</h2>
+    <div class="testimonial mx-auto" style="max-width:800px;">
+      <p class="fs-5 fst-italic">“Grazie al team ho superato il test d’ingresso con 100/100!”</p>
+      <footer class="blockquote-footer text-white">Mario Rossi</footer>
+    </div>
+  </section>
+
+</main>
+
+<!-- Sticky Mobile CTA -->
+<a href="#contatti" id="mobileCTA">Prenota Ora <i class="fas fa-arrow-right ms-2"></i></a>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center text-md-start">
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <h5>Contatti</h5>
+        <p>Email: <a href="mailto:info@consulenza-formazione.it">info@consulenza-formazione.it</a><br>Tel: +39 081 1234567</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Link Utili</h5>
+        <ul class="list-unstyled">
+          <li><a href="#chi-siamo">Chi Siamo</a></li>
+          <li><a href="#servizi">Servizi</a></li>
+          <li><a href="#corsi">Corsi</a></li>
+          <li><a href="#contatti">Contatti</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Seguici</h5>
+        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="mt-4 text-center">
+      <small>&copy; 2025 Consulenza & Formazione Napoli. Tutti i diritti riservati.</small>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Navbar scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', ()=> nav.classList.toggle('scrolled', window.scrollY>50));
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) { entry.target.classList.add('active'); obs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.2 });
+  reveals.forEach(el=> obs.observe(el));
+</script>
+</body>
+</html>
